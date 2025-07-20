@@ -15,7 +15,7 @@ services:
       - PUID=1000
       - STEAMBETA=false
     networks:
-      - satisfactory
+      - satisfactory-network
     restart: unless-stopped
     deploy:
       resources:
