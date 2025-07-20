@@ -1,0 +1,32 @@
+services:
+  satisfactory-server-01:
+    container_name: 'satisfactory-server-01'
+    hostname: 'satisfactory-server-01'
+    image: 'wolveix/satisfactory-server:latest'
+    ports:
+      - '7777:7777/tcp'
+      - '7777:7777/udp'
+      - '8888:8888/tcp'
+    volumes:
+      - './satisfactory-server:/config'
+    environment:
+      - MAXPLAYERS=4
+      - PGID=1000
+      - PUID=1000
+      - STEAMBETA=false
+    networks:
+      - satisfactory
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8Gq
+        reservations:
+          memory: 4G
+
+networks:
+  satisfactory-network:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.18.0.0/16"
