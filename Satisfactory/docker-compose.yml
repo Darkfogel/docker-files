@@ -1,7 +1,7 @@
 services:
   satisfactory-server-01:
-    container_name: 'satisfactory-server-01'
-    hostname: 'satisfactory-server-01'
+    container_name: 'satisfactory-50'
+    hostname: 'satisfactory-server-50'
     image: 'wolveix/satisfactory-server:latest'
     ports:
       - '7777:7777/tcp'
