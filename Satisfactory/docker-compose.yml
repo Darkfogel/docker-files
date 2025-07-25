@@ -2,10 +2,10 @@ version: '1.0'
 
 x-common: &common_server
   image: 'wolveix/satisfactory-server:latest'
-  ports:
-    - '7777:7777/tcp'
-    - '7777:7777/udp'
-    - '8888:8888/tcp'
+  # ports:
+  #   - '7777:7777/tcp'
+  #   - '7777:7777/udp'
+  #   - '8888:8888/tcp'
   volumes:
     - ./satisfactory-server:/config
     - satisfactory-gamefiles:/config/gamefiles
@@ -33,14 +33,14 @@ services:
       satisfactory-network:
         ipv4_address: 172.20.0.11
 
-  # satisfactory-server-02:
-  #   <<: *common_server
-  #   container_name: 'satisfactory-02'
-  #   hostname: 'satisfactory-02'
+  satisfactory-server-02:
+    <<: *common_server
+    container_name: 'satisfactory-02'
+    hostname: 'satisfactory-02'
   
-  #   networks:
-  #     satisfactory-network:
-  #       ipv4_address: 172.20.0.12
+    networks:
+      satisfactory-network:
+        ipv4_address: 172.20.0.12
 
   # satisfactory-server-03:
   #   <<: *common_server
