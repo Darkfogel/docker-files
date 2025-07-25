@@ -1,4 +1,4 @@
-version: 1.0
+version: '1.0'
 
 x-common: &common_server
   image: 'wolveix/satisfactory-server:latest'
