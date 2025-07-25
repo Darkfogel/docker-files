@@ -42,32 +42,32 @@ services:
       satisfactory-network:
         ipv4_address: 172.20.0.12
 
-  satisfactory-server-03:
-    <<: *common_server
-    container_name: 'satisfactory-03'
-    hostname: 'satisfactory-03'
+  # satisfactory-server-03:
+  #   <<: *common_server
+  #   container_name: 'satisfactory-03'
+  #   hostname: 'satisfactory-03'
   
-    networks:
-      satisfactory-network:
-        ipv4_address: 172.20.0.13
+  #   networks:
+  #     satisfactory-network:
+  #       ipv4_address: 172.20.0.13
 
-  satisfactory-server-04:
-    <<: *common_server
-    container_name: 'satisfactory-04'
-    hostname: 'satisfactory-04'
+  # satisfactory-server-04:
+  #   <<: *common_server
+  #   container_name: 'satisfactory-04'
+  #   hostname: 'satisfactory-04'
   
-    networks:
-      satisfactory-network:
-        ipv4_address: 172.20.0.14
+  #   networks:
+  #     satisfactory-network:
+  #       ipv4_address: 172.20.0.14
 
-  satisfactory-server-05:
-    <<: *common_server
-    container_name: 'satisfactory-05'
-    hostname: 'satisfactory-05'
+  # satisfactory-server-05:
+  #   <<: *common_server
+  #   container_name: 'satisfactory-05'
+  #   hostname: 'satisfactory-05'
   
-    networks:
-      satisfactory-network:
-        ipv4_address: 172.20.0.15
+  #   networks:
+  #     satisfactory-network:
+  #       ipv4_address: 172.20.0.15
 
 networks:
   satisfactory-network:
