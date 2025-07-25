@@ -33,14 +33,14 @@ services:
       satisfactory-network:
         ipv4_address: 172.20.0.11
 
-  satisfactory-server-02:
-    <<: *common_server
-    container_name: 'satisfactory-02'
-    hostname: 'satisfactory-02'
+  # satisfactory-server-02:
+  #   <<: *common_server
+  #   container_name: 'satisfactory-02'
+  #   hostname: 'satisfactory-02'
   
-    networks:
-      satisfactory-network:
-        ipv4_address: 172.20.0.12
+  #   networks:
+  #     satisfactory-network:
+  #       ipv4_address: 172.20.0.12
 
   # satisfactory-server-03:
   #   <<: *common_server
