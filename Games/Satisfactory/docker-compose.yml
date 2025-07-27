@@ -1,0 +1,22 @@
+services:
+  satisfactory-01:
+    image: 'wolveix/satisfactory-server:latest'
+    volumes:
+      - ./satisfactory-server:/config
+      - satisfactory-gamefiles:/config/gamefiles
+    environment:
+      - MAXPLAYERS=4
+      - PGID=1000
+      - PUID=1000
+      - STEAMBETA=false
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+    container_name: 'satisfactory-01'
+    hostname: 'satisfactory-01'
+    labels:
+    - "traefik.tcp.routers.satisfactory.rule=Host(`satisfactory-01.localhost`)"
