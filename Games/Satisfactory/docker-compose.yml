@@ -3,7 +3,6 @@ services:
     image: 'wolveix/satisfactory-server:latest'
     volumes:
       - ./satisfactory-server:/config
-      - satisfactory-gamefiles:/config/gamefiles
     environment:
       - MAXPLAYERS=4
       - PGID=1000
