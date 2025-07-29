@@ -8,8 +8,6 @@ services:
       - PGID=1000
       - PUID=1000
       - STEAMBETA=false
-      - SERVERGAMEPORT=17777
-      - SERVERMESSAGINGPORT=18888
     restart: unless-stopped
     deploy:
       resources:
