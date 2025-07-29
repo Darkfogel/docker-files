@@ -3,10 +3,17 @@ services:
     image: traefik:v3.5
     command:
       - "--api.insecure=true"
+      # Enabling Docker provider
       - "--providers.docker=true"
-      - "--entrypoints.web.address=:80"
+      # Do not expose containers unless explicitly told so
+      - "--providers.docker.exposedbydefault=false"      
+      # Entry points
+      - "--entrypoints.satisfactory-7777-tcp.address=:7777/tcp"
+      - "--entrypoints.satisfactory-7777-udp.address=:7777/udp"
+      - "--entrypoints.satisfactory-8888-tcp.address=:8888/tcp"
     ports:
       - "1080:80"
       - "18080:8080"
+      - "17777:7777"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
