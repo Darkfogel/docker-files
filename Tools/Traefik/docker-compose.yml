@@ -17,8 +17,8 @@
 #       - "8888:8888"
 #     volumes:
 #       - /var/run/docker.sock:/var/run/docker.sock
-
- traefik:
+services:
+  traefik:
     image: traefik:v3.5
     ports:
       - 80:80
