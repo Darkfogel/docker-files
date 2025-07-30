@@ -53,7 +53,7 @@ services:
       - "--entrypoints.satisfactory-8888-tcp.address=:8888/tcp"      
     labels:
       - traefik.enable=true
-      - traefik.http.routers.mydashboard.rule=Host(`traefik.localhost`)
+      - traefik.http.routers.mydashboard.rule=Host(`traefik.zenobia.local`)
       - traefik.http.routers.mydashboard.service=api@internal
       - traefik.http.routers.mydashboard.middlewares=myauth
       - traefik.http.middlewares.myauth.basicauth.users=test:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/
