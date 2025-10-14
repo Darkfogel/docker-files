@@ -1,0 +1,7 @@
+volumes:
+  satisfactory-01-gamefiles:
+    name: satisfactory-01-gamefiles
+  satisfactory-01-backups:
+    name: satisfactory-01-backups
+  satisfactory-01-saved:
+    name: satisfactory-01-saved
