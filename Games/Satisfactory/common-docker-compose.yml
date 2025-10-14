@@ -1,3 +1,16 @@
+services:
+  test:
+    network_mode: none
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM scratch
+    command: fake
+    volumes:
+      - satisfactory-01-gamefiles:/fake1
+      - satisfactory-01-backups:/fake2
+      - satisfactory-01-saved:/fake3
+
 volumes:
   satisfactory-01-gamefiles:
     name: satisfactory-01-gamefiles
