@@ -1,0 +1,36 @@
+### Ports 7921-7929 - 8921-8929
+
+services:
+  satisfactory-chef-01:
+    container_name: 'satisfactory-chef-01'
+    hostname: 'satisfactory-chef-01'
+    image: 'wolveix/satisfactory-server:latest'
+    ports:
+      - '7921:7921/tcp'
+      - '7921:7921/udp'
+      - '8921:8921/tcp'    
+    volumes:
+      - ./satisfactory-server-backup-ds920:/config/backups
+      - ./satisfactory-server-saved-ds920:/config/saved
+      - satisfactory-chef-01-gamefiles:/config/gamefiles
+      - satisfactory-chef-01-logs:/config/logs
+    environment:
+      - MAXPLAYERS=4
+      - PGID=1000
+      - PUID=1000
+      - STEAMBETA=false
+      - SERVERGAMEPORT=7921
+      - SERVERMESSAGINGPORT=8921
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+
+volumes:
+  satisfactory-chef-01-gamefiles:
+    name: satisfactory-chef-01-gamefiles
+  satisfactory-chef-01-logs:
+    name: satisfactory-chef-01-logs
