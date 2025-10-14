@@ -5,7 +5,7 @@ services:
       context: .
       dockerfile_inline: |
         FROM scratch
-    command: fake
+    command: ls
     volumes:
       - satisfactory-01-gamefiles:/fake1
       - satisfactory-01-backups:/fake2
