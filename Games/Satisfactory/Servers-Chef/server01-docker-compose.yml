@@ -25,7 +25,29 @@ services:
           memory: 8G
         reservations:
           memory: 4G
+  satisfactory-chef-02:
+    image: 'wolveix/satisfactory-server:latest'
+    volumes:
+      - satisfactory-chef-01:/config
+    environment:
+      - MAXPLAYERS=4
+      - PGID=1000
+      - PUID=1000
+      - STEAMBETA=false
+      - SERVERGAMEPORT=7922
+      - SERVERMESSAGINGPORT=8922
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+    container_name: 'satisfactory-chef-02'
+    hostname: 'satisfactory-chef-02'
 
 volumes:
   satisfactory-chef-01:
     name: satisfactory-chef-01
+  satisfactory-chef-02:
+    name: satisfactory-chef-02
