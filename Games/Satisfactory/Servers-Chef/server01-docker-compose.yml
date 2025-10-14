@@ -26,7 +26,13 @@ services:
         reservations:
           memory: 4G
   satisfactory-chef-02:
+    container_name: 'satisfactory-chef-01'
+    hostname: 'satisfactory-chef-01'
     image: 'wolveix/satisfactory-server:latest'
+    ports:
+      - '7922:7922/tcp'
+      - '7922:7922/udp'
+      - '8922:8922/tcp'    
     volumes:
       - satisfactory-chef-01:/config
     environment:
@@ -43,8 +49,6 @@ services:
           memory: 8G
         reservations:
           memory: 4G
-    container_name: 'satisfactory-chef-02'
-    hostname: 'satisfactory-chef-02'
 
 volumes:
   satisfactory-chef-01:
