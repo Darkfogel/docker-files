@@ -26,15 +26,15 @@ services:
         reservations:
           memory: 4G
   satisfactory-chef-02:
-    container_name: 'satisfactory-chef-01'
-    hostname: 'satisfactory-chef-01'
+    container_name: 'satisfactory-chef-02'
+    hostname: 'satisfactory-chef-02'
     image: 'wolveix/satisfactory-server:latest'
     ports:
       - '7922:7922/tcp'
       - '7922:7922/udp'
       - '8922:8922/tcp'    
     volumes:
-      - satisfactory-chef-01:/config
+      - satisfactory-chef-02:/config
     environment:
       - MAXPLAYERS=4
       - PGID=1000
