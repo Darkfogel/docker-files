@@ -10,10 +10,7 @@ services:
       - '7921:7921/udp'
       - '8921:8921/tcp'    
     volumes:
-      - satisfactory-server-backups-ds920:/config/backups
-      - satisfactory-server-saved-ds920:/config/saved
-      - satisfactory-chef-01-gamefiles:/config/gamefiles
-      - satisfactory-chef-01-logs:/config/logs
+      - satisfactory-chef-01:/config
     environment:
       - MAXPLAYERS=4
       - PGID=1000
@@ -30,13 +27,5 @@ services:
           memory: 4G
 
 volumes:
-  satisfactory-chef-01-gamefiles:
-    name: satisfactory-chef-01-gamefiles
-  satisfactory-chef-01-logs:
-    name: satisfactory-chef-01-logs
-  satisfactory-server-saved-ds920:
-    external: true
-    name: satisfactory-server-saved-ds920
-  satisfactory-server-backups-ds920:
-    external: true
-    name: satisfactory-server-backups-ds920
+  satisfactory-chef-01:
+    name: satisfactory-chef-01
