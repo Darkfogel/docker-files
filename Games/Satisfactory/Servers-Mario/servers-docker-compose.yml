@@ -1,0 +1,102 @@
+### Ports 7901-7909 - 8901-8909
+
+services:
+  satisfactory-mario-01:
+    container_name: 'satisfactory-mario-01'
+    hostname: 'satisfactory-mario-01'
+    image: 'wolveix/satisfactory-server:latest'
+    labels:
+    - "description=Mario 1.0 Rocky Desert"
+    - "date=2024-12"
+    ports:
+      - '7901:7901/tcp'
+      - '7901:7901/udp'
+      - '8901:8901/tcp'
+    volumes:
+      - satisfactory-mario-01:/config
+      - satisfactory-mario-gamefiles:/config/gamefiles
+      - satisfactory-mario-backups:/config/backups
+    environment:
+      - MAXPLAYERS=4
+      - PGID=1000
+      - PUID=1000
+      - STEAMBETA=false
+      - SERVERGAMEPORT=7901
+      - SERVERMESSAGINGPORT=8901
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+  satisfactory-mario-02:
+    container_name: 'satisfactory-mario-02'
+    hostname: 'satisfactory-mario-02'
+    image: 'wolveix/satisfactory-server:latest'
+    labels:
+    - "description=Mario 1.0 - Northern Forest"
+    - "date=2025-10"
+    ports:
+      - '7902:7902/tcp'
+      - '7902:7902/udp'
+      - '8902:8902/tcp'
+    volumes:
+      - satisfactory-mario-02:/config
+      - satisfactory-mario-gamefiles:/config/gamefiles
+      - satisfactory-mario-backups:/config/backups
+    environment:
+      - MAXPLAYERS=4
+      - PGID=1000
+      - PUID=1000
+      - STEAMBETA=false
+      - SERVERGAMEPORT=7902
+      - SERVERMESSAGINGPORT=8902
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+  satisfactory-mario-03:
+    container_name: 'satisfactory-mario-03'
+    hostname: 'satisfactory-mario-03'
+    image: 'wolveix/satisfactory-server:latest'
+    labels:
+    - "description=Mario 1.1"
+    - "date=??"
+    ports:
+      - '7903:7903/tcp'
+      - '7903:7903/udp'
+      - '8903:8903/tcp'
+    volumes:
+      - satisfactory-mario-03:/config
+      - satisfactory-mario-gamefiles:/config/gamefiles
+      - satisfactory-mario-backups:/config/backups
+    environment:
+      - MAXPLAYERS=4
+      - PGID=1000
+      - PUID=1000
+      - STEAMBETA=false
+      - SERVERGAMEPORT=7903
+      - SERVERMESSAGINGPORT=8903
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+
+volumes:
+  satisfactory-mario-01:
+    name: satisfactory-mario-01
+  satisfactory-mario-02:
+    name: satisfactory-mario-02
+  satisfactory-mario-03:
+    name: satisfactory-mario-03
+  satisfactory-mario-gamefiles:
+    name: satisfactory-01-gamefiles
+  satisfactory-mario-backups:
+    name: satisfactory-01-backups
