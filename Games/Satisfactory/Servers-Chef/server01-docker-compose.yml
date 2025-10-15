@@ -5,10 +5,13 @@ services:
     container_name: 'satisfactory-chef-01'
     hostname: 'satisfactory-chef-01'
     image: 'wolveix/satisfactory-server:latest'
+    labels:
+    - "description=Chef 1.0"
+    - "date=2024-12"
     ports:
       - '7921:7921/tcp'
       - '7921:7921/udp'
-      - '8921:8921/tcp'    
+      - '8921:8921/tcp'
     volumes:
       - satisfactory-chef-01:/config
       - satisfactory-chef-gamefiles:/config/gamefiles
@@ -31,10 +34,13 @@ services:
     container_name: 'satisfactory-chef-02'
     hostname: 'satisfactory-chef-02'
     image: 'wolveix/satisfactory-server:latest'
+    labels:
+    - "description=Chef 1.1"
+    - "date=2025-10"
     ports:
       - '7922:7922/tcp'
       - '7922:7922/udp'
-      - '8922:8922/tcp'    
+      - '8922:8922/tcp'
     volumes:
       - satisfactory-chef-02:/config
       - satisfactory-chef-gamefiles:/config/gamefiles
