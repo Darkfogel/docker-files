@@ -1,0 +1,71 @@
+### Ports 7921-7929 - 8921-8929
+
+services:
+  satisfactory-ben-01:
+    container_name: 'satisfactory-ben-01'
+    hostname: 'satisfactory-ben-01'
+    image: 'wolveix/satisfactory-server:latest'
+    labels:
+    - "description=Ben 1.0"
+    - "date=2025-07"
+    ports:
+      - '7931:7931/tcp'
+      - '7931:7931/udp'
+      - '8931:8931/tcp'
+    volumes:
+      - satisfactory-ben-01:/config
+      - satisfactory-ben-gamefiles:/config/gamefiles
+      - satisfactory-ben-backups:/config/backups
+    environment:
+      - MAXPLAYERS=4
+      - PGID=1000
+      - PUID=1000
+      - STEAMBETA=false
+      - SERVERGAMEPORT=7931
+      - SERVERMESSAGINGPORT=8931
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+  satisfactory-phil-01:
+    container_name: 'satisfactory-phil-01'
+    hostname: 'satisfactory-phil-01'
+    image: 'wolveix/satisfactory-server:latest'
+    labels:
+    - "description=Phil 1.0"
+    - "date=2024-03"
+    ports:
+      - '7932:7932/tcp'
+      - '7932:7932/udp'
+      - '8932:8932/tcp'
+    volumes:
+      - satisfactory-phil-01:/config
+      - satisfactory-ben-gamefiles:/config/gamefiles
+      - satisfactory-ben-backups:/config/backups
+    environment:
+      - MAXPLAYERS=4
+      - PGID=1000
+      - PUID=1000
+      - STEAMBETA=false
+      - SERVERGAMEPORT=7932
+      - SERVERMESSAGINGPORT=8932
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+
+volumes:
+  satisfactory-ben-01:
+    name: satisfactory-ben-01
+  satisfactory-phil-01:
+    name: satisfactory-phil-01
+  satisfactory-01-gamefiles:
+    name: satisfactory-01-gamefiles
+  satisfactory-01-backups:
+    name: satisfactory-01-backups
