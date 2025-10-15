@@ -1,0 +1,34 @@
+### Ports 7921-7929 - 8921-8929
+
+services:
+  satisfactory-loverboy-01:
+    container_name: 'satisfactory-loverboy-01'
+    hostname: 'satisfactory-loverboy-01'
+    image: 'wolveix/satisfactory-server:latest'
+    labels:
+    - "description=loverboy 1.0"
+    - "date=2024-12"
+    ports:
+      - '7911:7911/tcp'
+      - '7911:7911/udp'
+      - '8911:8911/tcp'
+    volumes:
+      - satisfactory-loverboy-01:/config
+    environment:
+      - MAXPLAYERS=4
+      - PGID=1000
+      - PUID=1000
+      - STEAMBETA=false
+      - SERVERGAMEPORT=7911
+      - SERVERMESSAGINGPORT=8911
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+
+volumes:
+  satisfactory-loverboy-01:
+    name: satisfactory-loverboy-01
