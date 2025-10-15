@@ -14,8 +14,6 @@ services:
       - '8901:8901/tcp'
     volumes:
       - satisfactory-mario-01:/config
-      - satisfactory-mario-gamefiles:/config/gamefiles
-      - satisfactory-mario-backups:/config/backups
     environment:
       - MAXPLAYERS=4
       - PGID=1000
@@ -43,8 +41,6 @@ services:
       - '8902:8902/tcp'
     volumes:
       - satisfactory-mario-02:/config
-      - satisfactory-mario-gamefiles:/config/gamefiles
-      - satisfactory-mario-backups:/config/backups
     environment:
       - MAXPLAYERS=4
       - PGID=1000
@@ -72,8 +68,6 @@ services:
       - '8903:8903/tcp'
     volumes:
       - satisfactory-mario-03:/config
-      - satisfactory-mario-gamefiles:/config/gamefiles
-      - satisfactory-mario-backups:/config/backups
     environment:
       - MAXPLAYERS=4
       - PGID=1000
@@ -96,7 +90,3 @@ volumes:
     name: satisfactory-mario-02
   satisfactory-mario-03:
     name: satisfactory-mario-03
-  satisfactory-mario-gamefiles:
-    name: satisfactory-01-gamefiles
-  satisfactory-mario-backups:
-    name: satisfactory-01-backups

@@ -14,8 +14,6 @@ services:
       - '8921:8921/tcp'
     volumes:
       - satisfactory-chef-01:/config
-      - satisfactory-chef-gamefiles:/config/gamefiles
-      - satisfactory-chef-backups:/config/backups
     environment:
       - MAXPLAYERS=4
       - PGID=1000
@@ -43,8 +41,6 @@ services:
       - '8922:8922/tcp'
     volumes:
       - satisfactory-chef-02:/config
-      - satisfactory-chef-gamefiles:/config/gamefiles
-      - satisfactory-chef-backups:/config/backups
     environment:
       - MAXPLAYERS=4
       - PGID=1000
@@ -65,7 +61,3 @@ volumes:
     name: satisfactory-chef-01
   satisfactory-chef-02:
     name: satisfactory-chef-02
-  satisfactory-chef-gamefiles:
-    name: satisfactory-01-gamefiles
-  satisfactory-chef-backups:
-    name: satisfactory-01-backups

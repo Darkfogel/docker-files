@@ -14,8 +14,6 @@ services:
       - '8931:8931/tcp'
     volumes:
       - satisfactory-ben-01:/config
-      - satisfactory-01-gamefiles:/config/gamefiles
-      - satisfactory-01-backups:/config/backups
     environment:
       - MAXPLAYERS=4
       - PGID=1000
@@ -43,8 +41,6 @@ services:
       - '8932:8932/tcp'
     volumes:
       - satisfactory-phil-01:/config
-      - satisfactory-01-gamefiles:/config/gamefiles
-      - satisfactory-01-backups:/config/backups
     environment:
       - MAXPLAYERS=4
       - PGID=1000
@@ -65,7 +61,3 @@ volumes:
     name: satisfactory-ben-01
   satisfactory-phil-01:
     name: satisfactory-phil-01
-  satisfactory-01-gamefiles:
-    name: satisfactory-01-gamefiles
-  satisfactory-01-backups:
-    name: satisfactory-01-backups
