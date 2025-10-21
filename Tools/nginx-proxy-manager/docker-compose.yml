@@ -16,6 +16,8 @@ services:
       DB_MYSQL_USER: npm
       DB_MYSQL_PASSWORD: /run/secrets/DB_MYSQL_PASSWORD
       DB_MYSQL_DATABASE: npm
+    secrets:
+      - DB_MYSQL_PASSWORD
     depends_on:
       - db
 
@@ -28,6 +30,9 @@ services:
       MYSQL_DATABASE: npm
       MYSQL_USER: npm
       MYSQL_PASSWORD__FILE: /run/secrets/DB_MYSQL_PASSWORD
+    secrets
+    - DB_MYSQL_ROOT_PASSWORD
+    - DB_MYSQL_PASSWORD
     volumes:
       - ./mysql:/var/lib/mysql
 
