@@ -14,5 +14,3 @@ services:
       # IPV6: "TRUE" # Set IPv6 address
       # DEBUG: "FALSE" # DEBUG LOGGING
     restart: unless-stopped
-
-secrets:
