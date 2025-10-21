@@ -30,7 +30,7 @@ services:
       MYSQL_DATABASE: npm
       MYSQL_USER: npm
       MYSQL_PASSWORD__FILE: /run/secrets/DB_MYSQL_PASSWORD
-    secrets
+    secrets:
     - DB_MYSQL_ROOT_PASSWORD
     - DB_MYSQL_PASSWORD
     volumes:
