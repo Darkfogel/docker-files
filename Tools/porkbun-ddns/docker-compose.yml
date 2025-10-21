@@ -5,22 +5,14 @@ services:
     environment:
       DOMAIN: "zetegenia.ca" # Your Porkbun domain
       SUBDOMAINS: "home" # Subdomains comma spreaded
-      #SECRETAPIKEY: /run/secrets/porkbun-ddns-secret_api_key # Your Porkbun Secret-API-Key
-      #APIKEY: /run/secrets/porkbun-ddns-api_key # Your Porkbun API-Key
+      SECRETAPIKEY: "" # Your Porkbun Secret-API-Key
+      APIKEY: "" # Your Porkbun API-Key
       # PUBLIC_IPS: "1.2.3.4,2001:043e::1" # Set if you got static IP's
       # FRITZBOX: "192.168.178.1" # Use Fritz!BOX to obtain Public IP's
       # SLEEP: "300" # Seconds to sleep between DynDNS runs
       # IPV4: "TRUE" # Set IPv4 address
       # IPV6: "TRUE" # Set IPv6 address
       # DEBUG: "FALSE" # DEBUG LOGGING
-    entrypoint: [ '/bin/sh', '-c', 'export SECRETAPIKEY=$$(cat /var/run/secrets/porkbun-ddns-secret_api_key) && export APIKEY=$$(cat /var/run/secrets/porkbun-ddns-api_key) ; source /entrypoint.sh' ]
-    secrets:
-      - porkbun-ddns-secret_api_key
-      - porkbun-ddns-api_key
     restart: unless-stopped
 
 secrets:
-  porkbun-ddns-secret_api_key:
-    external: true
-  porkbun-ddns-api_key:
-    external: true
