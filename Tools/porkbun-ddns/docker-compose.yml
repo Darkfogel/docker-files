@@ -13,6 +13,9 @@ services:
       # IPV4: "TRUE" # Set IPv4 address
       # IPV6: "TRUE" # Set IPv6 address
       # DEBUG: "FALSE" # DEBUG LOGGING
+    secrets:
+      - porkbun-ddns-secret_api_key
+      - porkbun-ddns-api_key
     restart: unless-stopped
 
 secrets:
