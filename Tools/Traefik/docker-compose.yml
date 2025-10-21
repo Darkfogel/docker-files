@@ -1,0 +1,67 @@
+# services:
+#   traefik:
+#     image: traefik:v3.5
+#     command:
+#       - --api.dashboard=true
+#       - --log.level=DEBUG
+#       # Enabling Docker provider
+#       - --providers.docker=true
+#       # Do not expose containers unless explicitly told so
+#       - --providers.docker.exposedbydefault=false
+#       # Entry points
+#       - "--entrypoints.satisfactory-7777-tcp.address=:7777/tcp"
+#       - "--entrypoints.satisfactory-7777-udp.address=:7777/udp"
+#       - "--entrypoints.satisfactory-8888-tcp.address=:8888/tcp"
+#     ports:
+#       - "7777:7777"
+#       - "8888:8888"
+#     volumes:
+#       - /var/run/docker.sock:/var/run/docker.sock
+services:
+  traefik:
+    image: traefik:v3.5
+    ports:
+      - 80:80
+      - 443:443
+      - 7777:7777
+      - 8888:8888
+    networks:
+      - proxy      
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - letsencrypt:/letsencrypt
+      #- /var/log:/var/log
+    command:
+      - --api.dashboard=true
+      - --log.level=DEBUG
+      #- --log.filepath=/var/log/traefik.log
+      - --accesslog=true
+      #- --accesslog.filepath=/var/log/traefik-access.log
+      - --providers.docker.network=proxy
+      - --providers.docker.exposedByDefault=false
+      - --entrypoints.web.address=:80
+      - --entrypoints.web.http.redirections.entrypoint.to=websecure
+      - --entryPoints.web.http.redirections.entrypoint.scheme=https
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.websecure.asDefault=true 
+      - --entrypoints.websecure.http.tls.certresolver=myresolver
+      - --certificatesresolvers.myresolver.acme.tlschallenge=true
+      - --certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json
+       # Entry points
+      - "--entrypoints.satisfactory-7777-tcp.address=:7777/tcp"
+      - "--entrypoints.satisfactory-7777-udp.address=:7777/udp"
+      - "--entrypoints.satisfactory-8888-tcp.address=:8888/tcp"      
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.mydashboard.rule=Host(`traefik.home.arpa`)
+      - traefik.http.routers.mydashboard.service=api@internal
+      - traefik.http.routers.mydashboard.middlewares=myauth
+      - traefik.http.middlewares.myauth.basicauth.users=test:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/
+
+networks:
+  proxy:
+    name: proxy
+
+volumes:
+  letsencrypt:
+    name: letsencrypt

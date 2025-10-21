@@ -1,0 +1,35 @@
+services:
+  satisfactory-01:
+    image: 'wolveix/satisfactory-server:latest'
+    volumes:
+      - ./satisfactory-server:/config
+    environment:
+      - MAXPLAYERS=4
+      - PGID=1000
+      - PUID=1000
+      - STEAMBETA=false
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+    container_name: 'satisfactory-01'
+    hostname: 'satisfactory-01'
+    labels:
+    ## UDP Routers
+    - "traefik.udp.routers.satisfactory-7777.entrypoints=satisfactory-7777-udp"
+    - "traefik.udp.routers.satisfactory-7777.service=satisfactory-7777-udp-svc"
+    ## Services - UDP
+    - "traefik.udp.services.satisfactory-7777-udp-svc.loadbalancer.server.address=127.0.0.1:7777"
+    ## TCP Routers
+    - "traefik.tcp.routers.satisfactory-7777.entrypoints=satisfactory-7777-tcp"
+    - "traefik.tcp.routers.satisfactory-7777.rule=HostSNI(`*`)"
+    - "traefik.tcp.routers.satisfactory-7777.service=satisfactory-7777-svc"
+    - "traefik.tcp.routers.satisfactory-8888.entrypoints=satisfactory-8888-tcp"
+    - "traefik.tcp.routers.satisfactory-8888.rule=HostSNI(`*`)"
+    - "traefik.tcp.routers.satisfactory-8888.service=satisfactory-8888-svc"
+    ## Services - TCP
+    - "traefik.tcp.services.satisfactory-7777-svc.loadbalancer.server.address=127.0.0.1:7777"
+    - "traefik.tcp.services.satisfactory-8888-svc.loadbalancer.server.address=127.0.0.1:8888"
