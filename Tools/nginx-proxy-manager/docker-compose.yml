@@ -1,34 +1,24 @@
 services:
   app:
     image: 'jc21/nginx-proxy-manager:latest'
-    container_name: nginxproxymanager
     restart: unless-stopped
+    network_mode: "host"
     ports:
-      - '80:80'
-      - '443:443'
-      - '81:81' # Web UI port
+      # These ports are in format <host-port>:<container-port>
+      - '80:80' # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81' # Admin Web Port
+      # Add any other Stream port you want to expose
+      # - '21:21' # FTP
+
+    #environment:
+      # Uncomment this if you want to change the location of
+      # the SQLite DB file within the container
+      # DB_SQLITE_FILE: "/data/database.sqlite"
+
+      # Uncomment this if IPv6 is not enabled on your host
+      # DISABLE_IPV6: 'true'
+
     volumes:
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
-    environment:
-      DB_MYSQL_HOST: db
-      DB_MYSQL_PORT: 3306
-      DB_MYSQL_USER: npm
-      DB_MYSQL_DATABASE: npm
-    secrets:
-      - DB_MYSQL_PASSWORD
-    depends_on:
-      - db
-
-  db:
-    image: 'mariadb:latest'
-    container_name: npm-db
-    restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: npm
-      MYSQL_USER: npm
-    secrets:
-    - DB_MYSQL_ROOT_PASSWORD
-    - DB_MYSQL_PASSWORD
-    volumes:
-      - ./mysql:/var/lib/mysql
