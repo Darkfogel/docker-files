@@ -4,7 +4,7 @@ services:
     container_name: pihole
     image: pihole/pihole:latest
     networks:
-      - frontend
+      - nginx-proxy-manager_default
     ports:
       # DNS Ports
       - "53:53/tcp"
