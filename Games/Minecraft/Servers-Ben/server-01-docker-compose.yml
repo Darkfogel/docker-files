@@ -1,0 +1,17 @@
+services:
+  minecraft-Ben-01:
+    image: itzg/minecraft-server:latest
+    pull_policy: daily
+    tty: true
+    stdin_open: true
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+    volumes:
+      # attach the relative directory 'data' to the container's /data path
+      -  minecraft-Ben-01:/data
+
+volumes:
+  minecraft-Ben-01:
+    name: minecraft-Ben-01
