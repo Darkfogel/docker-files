@@ -1,0 +1,15 @@
+services:
+  nitrox:
+    image: "cuteminded/nitrox-server:latest"
+    restart: "unless-stopped"
+    tty: true
+    stdin_open: true
+    ports:
+      - "11000:11000/udp" # Nitrox Game Port
+      - "50000:50000" # GUI Config Editor Port (if enabled)
+    environment:
+      TZ: "Etc/GMT-5"
+      SUBNAUTICA_INSTALLATION_PATH: "/mnt/subnautica"
+    volumes:
+      - "./config:/app/config/Nitrox"
+      - "./subnautica:/mnt/subnautica"
