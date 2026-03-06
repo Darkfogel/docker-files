@@ -11,5 +11,11 @@ services:
       TZ: "Etc/GMT-5"
       SUBNAUTICA_INSTALLATION_PATH: "/mnt/subnautica"
     volumes:
-      - "./config:/app/config/Nitrox"
-      - "./subnautica:/mnt/subnautica"
+      - subnautica-phil-config-01:/app/config/Nitrox
+      - subnautica-phil-gamefiles-01:/mnt/subnautica
+
+volumes:
+  subnautica-phil-gamefiles-01:
+    name: subnautica-phil-gamefiles-01
+  subnautica-phil-config-01:
+    name: subnautica-phil-config-01
