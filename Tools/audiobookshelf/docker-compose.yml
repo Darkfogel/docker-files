@@ -1,0 +1,18 @@
+services:
+  app:
+    image: advplyr/audiobookshelf:edge
+    restart: unless-stopped
+    ports:
+      - '13787:80' # Public HTTP Port
+
+    volumes:
+      - ds920-media:/audiobooks
+      - ds920-media:/podcasts
+      - audiobooks-config:/config
+      - audiobooks-metadata:/metadata
+
+volumes:
+  audiobooks-config:
+  audiobooks-metadata:
+  ds920-media:
+    external: true
