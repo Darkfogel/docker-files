@@ -6,13 +6,13 @@ services:
       - '13787:80' # Public HTTP Port
 
     volumes:
-      - ds920-media:/audiobooks
-      - ds920-media:/podcasts
+      - DS920-media:/audiobooks
+      - DS920-media:/podcasts
       - audiobooks-config:/config
       - audiobooks-metadata:/metadata
 
 volumes:
   audiobooks-config:
   audiobooks-metadata:
-  ds920-media:
+  DS920-media:
     external: true
